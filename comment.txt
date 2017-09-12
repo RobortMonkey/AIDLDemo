@@ -1,0 +1,16 @@
+1.自定义参数无效  
+	在app build 文件中 android 级下填入
+	  sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+            resources.srcDirs = ['src/main/java', 'src/main/aidl']
+            aidl.srcDirs = ['src/main/aidl']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+     将 bean 放入到aidl 包中
+2. service 中 onBinder 函数中返回  IMyAidlInterface.stub 的对象。 不然报错
+3. 服务端和客户端 aidl 文件的包名（路径）要一致。
+4. 开启service时 5.0系统要设置 setactiion(x,x); setClass(x,x);
